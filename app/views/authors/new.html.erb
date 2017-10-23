@@ -1,0 +1,18 @@
+<h1>Create new author</h1>
+
+<%= simple_form_for @author do |form| %>
+  <%= form.input :name %>
+
+
+
+    <%= form.simple_fields_for :books do |book| %>
+      <%= render 'book_fields', f: book %>
+      <div class="links">
+        <%= link_to_add_association 'add book', form, :books, partial: 'book_fields' %>
+      </div>
+    <% end %>
+
+
+
+  <%= form.submit %>
+<% end  %>
